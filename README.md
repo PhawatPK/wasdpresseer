@@ -2,7 +2,7 @@
 
 Holds **W → A → S → D** for 0.75 s each, in a loop. Toggle it with global hotkeys.
 
-Built on `evdev`/`uinput`, so it works on **Linux under Wayland** as well as X11.
+Works on **Windows** and **Linux** (Wayland and X11).
 
 ## Hotkeys
 
@@ -14,9 +14,16 @@ Built on `evdev`/`uinput`, so it works on **Linux under Wayland** as well as X11
 
 ## Requirements
 
-- Linux
-- Python 3
-- [`evdev`](https://pypi.org/project/evdev/)
+Python 3.
+
+### Windows
+
+No extra packages. It sends scan codes with `SendInput`, so most games pick up the key presses.
+
+- If the game runs as administrator, run the script as administrator too.
+- Some anti-cheat systems block simulated input.
+
+### Linux
 
 ```sh
 pip install evdev
@@ -42,5 +49,5 @@ Edit the constants at the top of `wasd_presser.py`:
 
 ```python
 HOLD_TIME = 0.75                              # seconds per key
-KEYS = [e.KEY_W, e.KEY_A, e.KEY_S, e.KEY_D]   # keys, in order
+KEYS = ["w", "a", "s", "d"]                   # keys, in order
 ```
